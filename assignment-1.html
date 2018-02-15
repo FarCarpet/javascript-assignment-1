@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script type="text/javascript">
+
+
+
+        function loadProvinces(){
+
+            var provincesArray  = ["Alberta", "British Colombia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan"];
+            var selectBox;
+            selectBox = document.getElementById('cboProv');
+
+                for(i=0; i<provincesArray.length; i++){
+                    var opt = document.createElement('option');
+                    opt.value = provincesArray[i];
+                    opt.innerHTML = provincesArray[i];
+                    selectBox.appendChild(opt);
+
+                }
+        }
+
+
+
+
+
+        </script>
+
+        <title>Assignment 1</title>
+    </head>
+
+    <body onload="loadProvinces()">
+        <h1>Provinces of Canada</h1>
+
+        <select id="cboProv">
+            <option value="">-Select-</option>
+        </select>
+        Name: <input type="text" name="txtName" id="txtName">
+        Email:<input type="text" name="txtEmail" id="txtEmail">
+        <input type="button" value="Submit" onclick="validateForm()">
+
+
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<html>
+<!-- our basic 'shell' for javascript work -->
+    <head>
+    <script type="text/javascript">
+
+        function populateCourses(){
+           var courses = ["basketweaving","taxidermy","kineisology","astrology"];
+           // a variable to hold my select box
+           var sBox = document.getElementById('sCourses');
+           // my default option in the selectBox
+           var dOpt = document.createElement('option');
+           dOpt.value = "";
+           dOpt.innerHTML="- Select -";
+           sBox.appendChild(dOpt);
+           // for loop to populate the options
+           for(index=0;index<courses.length;index++){
+              var opt = document.createElement('option');
+              opt.value=courses[index];
+              opt.innerHTML = courses[index];
+              sBox.appendChild(opt);
+           }
+
+        }
+
+        // ------------------------------------------------
+
+        function validateForm(){
+            // did the user select something in the sCourses
+            // select box?  If not, let them know and return
+            // focus back to the that element
+            if(document.forms[0].elements[0].selectedIndex==0){
+                // the user hasn't selected anything yet...
+                alert("Please select a course");
+                // put the focus onto the select sBox
+                document.forms[0].elements[0].focus();
+                // kick me out of the validate function
+                return false;
+            }else if(document.forms[0].elements[1].value==""){
+              // the user hasn't selected anything yet...
+              alert("Please enter your name");
+              // put the focus onto the select sBox
+              document.forms[0].elements[1].focus();
+              // kick me out of the validate function
+              return false;
+            }else if(document.forms[0].elements[2].value==""){
+              // the user hasn't selected anything yet...
+              alert("Please enter a password");
+              // put the focus onto the select sBox
+              document.forms[0].elements[2].focus();
+              // kick me out of the validate function
+              return false;
+            }else if(document.forms[0].elements[3].value.trim()==""){
+              // the user hasn't selected anything yet...
+              alert("Please enter a description");
+              // put the focus onto the select sBox
+              document.forms[0].elements[3].focus();
+              // kick me out of the validate function
+              return false;
+            }
+            // all my form validation passes, submit the form
+            document.forms[0].submit();
+        }
+
+    </script>
+    </head>
+    <body>
+        <input type="button" onclick='populateCourses()'
+              value="populateCourses">
+        <br/>
+        <form name="myForm"
+          action="http://localhost/javascript/response.php"
+          method="post">
+
+            Select a Course: <select name="sCourses" id="sCourses">
+            </select>
+
+            <br/>
+
+            Name: <input type="text" name="txtName" id="txtName"/>
+            <br/>
+
+            Password: <input type="password" name="txtPassword"
+                          id="txtPassword"/>
+            <br/>
+
+            Description: <textarea height="300px" width="300px"
+                          name="textAreaBox" id="textAreaBox">
+                        </textarea>
+            <br/>
+
+            <input type="button" name="btnSubmit" value="Submit Form"
+                onclick="validateForm()"/>
+        </form>
+    </body>
+
+</html>

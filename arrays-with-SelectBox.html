@@ -1,0 +1,70 @@
+<html>
+<!-- our basic 'shell' for javascript work -->
+    <head>
+    <script type="text/javascript">
+        function populateCars(){
+            //instantiate our cars array
+            var carsArray = ["Mustang","Tonka","Matchbox","Hotwheels"];
+
+            // here's a variable to hold our select box object
+            var selectBox;
+            // let's populate it - the whole select box object is in here
+            selectBox = document.getElementById('cars');
+
+            // here's a for loop which we'll use to populate
+            // the options in our cars select box
+            for(index=0;index<carsArray.length;index++){
+              // document.write("<option value='" + carsArray[i] + "' ")....
+                // create an option element
+                var opt = document.createElement('option');
+                opt.value = carsArray[index];
+                opt.innerHTML = carsArray[index];
+                selectBox.appendChild(opt);
+            }
+        }
+
+        function validateForm(){
+            // here we'll check and see if the user has
+            // filled out some of our form elements correctly
+            var selectBox = document.getElementById('gamingConsoles');
+            var textBox = document.getElementById('fullName');
+            if (selectBox.selectedIndex == 0){
+                // alert the user they need to select a value
+                alert("please select a gaming console");
+                // set the focus back to the select box
+                selectBox.focus();
+                // kick user out of validation so they can fix the error
+                return;
+            }else if(textBox.value==""){
+              // alert the user they need to select a value
+              alert("please enter a full name");
+              // set the focus back to the select box
+              textBox.focus();
+              // kick user out of validation so they can fix the error
+              return;
+            }
+        }
+    </script>
+    </head>
+    <body>
+        <select id="gamingConsoles">
+            <option name="default" value="">-Select-</option>
+            <option name="X-Box" value="X-Box">X-Box</option>
+            <option name="Wii" value="Wii">Wii</option>
+            <option name="Atari 2600" value="Atari 2600">Atari 2600</option>
+        </select>
+        <br/>
+        <select id="cars">
+        </select>
+        <br/>
+        <input type="button" onclick="populateCars()"
+          value="Populate Cars"/>
+
+        <br/><br/>
+        Full Name: <input type="text" name="fullName" id="fullName">
+        <br/><br/>
+        <input type="button" onclick="validateForm()" value="Validate">
+    </body>
+
+
+</html>
